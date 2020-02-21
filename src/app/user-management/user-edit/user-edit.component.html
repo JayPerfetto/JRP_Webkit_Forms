@@ -1,0 +1,62 @@
+<div class="row text-left">
+    <div class="col-sm-12">
+        <div class="content-header">Edit User</div>
+    </div>
+    <div class="col-12 mt-2">
+        <div class="form-group text-left">
+            <button type="button" (click)="cancel()" class="btn btn-raised btn-round mr-1 btn-info">Go Back</button>
+            <button type="button" (click)="delete()" class="btn btn-raised btn-round mr-1 btn-danger">Delete</button>
+            <button type="button" (click)="onReactiveFormSubmit(regularForm.value)"
+                class="btn btn-raised btn-round mr-1 btn-success" [disabled]="!regularForm.valid">Save</button>
+        </div>
+    </div>
+</div>
+<div class="row text-left" matchHeight="card">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="font-weight-bold">User Details:</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form [formGroup]="regularForm" (ngSubmit)="onReactiveFormSubmit(regularForm.value)" novalidate>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="p-2">
+                                    <div class="form-group">
+                                        <h5><strong>Name:</strong></h5>
+                                        <h6>{{ item.displayName }}</h6>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <div class="form-group">
+                                        <h5><strong>Email:</strong></h5>
+                                        <h6>{{ item.email }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <h5><strong>Administrator:</strong></h5>
+                                    <ul>
+                                        <li>
+                                            <h6 class="text-muted">Can Administer User Roles</h6>
+                                        </li>
+                                        <li>
+                                            <h6 class="text-muted">Can Delete Data</h6>
+                                        </li>
+                                    </ul>
+                                    <mat-slide-toggle class="p-2" (change)="adminChanged($event)"
+                                        formControlName="admin"></mat-slide-toggle><br>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <img [src]="item.photoURL" style="max-width: 50%;" class="img-fluid rounded mx-auto d-block" alt="Responsive image">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+API Documentation:
+
+To Consume Any Collection:
+
+base URL = 'https://https://us-central1-variance-eeeb3.cloudfunctions.net/'
+
+Available Endpoints: 
+
+Collection Stats = 'CollectionStats'
+Resources = 'Resources'
+Measures = 'Measures'
+Contracts = 'Contracts'
+Contract Measures = 'ContractMeasures'
+Entities = 'Entities'
+People = 'Persons'
+Providers = 'Providers'
+Users = 'Users'
+
+python example:
+from src.uril import Util
+import json, io
+url: str = 'https://us-central1-variance-eeeb3.cloudfunctions.net/Users'
+data = Uril.get_json(url)

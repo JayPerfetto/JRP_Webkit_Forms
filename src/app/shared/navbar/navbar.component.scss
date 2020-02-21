@@ -1,0 +1,80 @@
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.navbar {
+  height: 60px;
+  background: #000000;  /* fallback for old browsers */
+}
+
+.btn-outline-white:hover {
+  background: #8e9eab;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-color: #222222;
+}
+.avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.btn-outline-white {
+  border-radius: 10px;
+  width: 250px;
+}
+
+
+.icon {
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 3px;
+}
+
+.navbar-collapse.collapse {
+    display: block!important;
+  }
+  
+  .navbar-nav>li, .navbar-nav {
+    float: right !important;
+  }
+  
+  .navbar-nav.navbar-right:last-child {
+    margin-right: -15px !important;
+  }
+  
+  .navbar-right {
+    float: right!important;
+  }
+
+#navbarNavAltMarkup {
+    position: absolute;
+    z-index: 1;
+}
+
+.display-4 {
+    position: relative;
+}
+
+.navbar {
+    height: 55px;
+    padding: 0rem;
+}
+
+@media screen and (max-width: 991px) {
+    .hidden-small {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .hidden-large {
+        display: none !important;
+    }
+}

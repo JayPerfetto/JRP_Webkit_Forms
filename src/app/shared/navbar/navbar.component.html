@@ -1,0 +1,61 @@
+<!-- Navbar (Header) Starts -->
+<nav class="header-navbar navbar navbar-expand-lg navbar-light bg-faded">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle d-lg-none float-left text-white" data-toggle="collapse" (click)="toggleSidebar()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="d-lg-none navbar-right navbar-collapse-toggle">
+                <a class="open-navbar-container" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent">
+                    <i class="ft-more-vertical"></i>
+                </a>
+            </span> 
+            <ul class="navbar-nav mr-0 hidden-large">
+                <li *ngIf="auth.user$ | async as user" class="nav-item mr-0" ngbDropdown placement="bottom-right">
+                    <a class="nav-link position-relative text-right text-white mr-2"id="dropdownBasic3" ngbDropdownToggle>
+                        <span>{{ user.displayName }}&nbsp;&nbsp;&nbsp;</span>
+                        <span><img src="{{ user.photoURL }}" class="avatar"></span>    
+                    </a>
+                    <div *ngIf="!auth.user$ | async as user" ngbDropdownMenu aria-labelledby="dropdownBasic3" (click)="auth.login()">                           
+                        <div class="dropdown-item">
+                            <a class="primary"><span>Log In&nbsp;<i class="ft-log-in icon font-medium-1 text-dark"></i></span></a>
+                        </div>
+                    </div>
+                    <div *ngIf="auth.user$ | async as user" ngbDropdownMenu aria-labelledby="dropdownBasic3">  
+                        <div class="dropdown-item" (click)="auth.signOut()">
+                            <a class="danger"><span><i class="ft-log-out icon font-medium-1 text-dark"></i>&nbsp;&nbsp;Log Out</span></a>
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="navbar-container">
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="hidden-small navbar-nav mr-0">
+                    <li *ngIf="auth.user$ | async as user" class="nav-item mr-0" ngbDropdown placement="bottom-right">
+                        <a class="nav-link position-relative text-right text-white mr-2"id="dropdownBasic3" ngbDropdownToggle>
+                            <span>{{ user.displayName }}&nbsp;&nbsp;&nbsp;</span>
+                            <span><img src="{{ user.photoURL }}" class="avatar"></span>    
+                        </a>
+                        <div *ngIf="!auth.user$ | async as user" ngbDropdownMenu aria-labelledby="dropdownBasic3" (click)="auth.login()">                           
+                            <div class="dropdown-item">
+                                <a class="primary"><span>Log In&nbsp;<i class="ft-log-in icon font-medium-1 text-dark"></i></span></a>
+                            </div>
+                        </div>
+                        <div *ngIf="auth.user$ | async as user" ngbDropdownMenu aria-labelledby="dropdownBasic3">  
+                            <div class="dropdown-item" (click)="auth.signOut()">
+                                <a class="danger"><span><i class="ft-log-out icon font-medium-1 text-dark"></i>&nbsp;&nbsp;Log Out</span></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Navbar (Header) Ends -->

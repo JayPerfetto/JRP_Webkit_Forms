@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "variance-eeeb3",
+    "nhc-dev": "nhc-fmv-calculator"
+  }
+}

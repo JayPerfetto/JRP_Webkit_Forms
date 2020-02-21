@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12 mt-3 mb-1">
+        <div class="content-header"><h1>Jason Perfetto's Custom Webkit - Forms Demo</h1></div>
+        <p class="content-sub-header">A custom "business" application demonstrating multiple features such as <b>User Management, Complex Forms, Data Management & Security, and Reporting</b>.</p>
+    </div>
+</div>
+<div class="row" matchHeight="card">
+    <div class="col-lg-8 col-12">
+        <div class="card text-left">
+            <div class="card-header">
+                <h4>Instructions for Use:</h4>
+                <p>Please read the information below <strong>before</strong> using the application.</p>
+            </div>
+            <hr>
+            <div class="card-body">
+                <div class="card-content">
+                    <div class="row text-justify">
+                        <div class="col-12">
+                            <p>The navigation bar on the left will grant you access to the various modules within the application.
+                                All users can submit a sample form, view a list of all past submissions and their result reports, 
+                                or edit their own past submissions.  Application Administrators can additionally manage application users, 
+                                and edit other's form submissions.</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>This webkit can support an unlimited number of different forms for your users, 
+                                and allows the definition of highly granular data-access priviliges for your users across the entire application. 
+                                There is also full support for all other modules or component from the JRP Angular Webkit, such as informational pages. 
+                                A generic information page has been included in this application as an example.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-lg-none row text-center my-auto">
+                        <div class="col-12">
+                            <div class="content-header mb-3">Ready to begin?</div>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="form-group text-left">
+                                <button id="submitNew" type="button" (click)="beginQuestionnaire()" class="btn btn-block btn-raised btn-round mr-1 btn-success">
+                                    Submit a new Form
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-4 col-12">  
+        <div class="card text-left">
+            <div class="row text-center my-auto">
+                <div class="col-12">
+                    <div class="content-header mb-3">Ready to begin?</div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="form-group text-left">
+                        <button id="submitNew" type="button" (click)="beginQuestionnaire()" class="btn btn-block btn-raised btn-round mr-1 btn-success">
+                            Submit a new Form!
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh m-0">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body login-img">
+                            <div class="row m-0">
+                                <div class="col-lg-6 d-lg-block d-none m-0 p-0">
+                                    <img src="../../assets/img/gallery/medical-login.png" alt="" class="img-fluid"/>
+                                </div>
+                                <div height="230" class="container col-lg-6 col-md-12 bg-white pt-3">
+                                    <h2 class="card-title mb-2 text-center">Forms Demo</h2>
+                                    <h5 class="card-title mb-2 text-center text-muted">A demo app built with Jason Perfetto's custom webkit</h5>
+                                    <p class="card-text mb-3 mt-3 text-center">
+                                      Welcome, please login.
+                                    </p>
+                                    <div class="row vertical-center mt-3">
+                                        <div class="col-12">
+                                            <firebase-ui (signInSuccessWithAuthResult)="successCallback($event)"
+                                            (signInFailure)="errorCallback($event)"></firebase-ui>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->

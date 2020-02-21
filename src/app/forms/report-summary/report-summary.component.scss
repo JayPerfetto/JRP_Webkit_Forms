@@ -1,0 +1,18 @@
+.card:hover{
+    -moz-box-shadow: 7px 7px 7px 7px rgba(0, 0, 0,0.3);
+    -webkit-box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, .3);
+    box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, .3);
+}
+
+.card-hover .reveal {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+}
+
+.card-hover:hover .reveal {
+    visibility: visible;
+    opacity: 10;
+    transition: opacity 0.5s ease;
+}

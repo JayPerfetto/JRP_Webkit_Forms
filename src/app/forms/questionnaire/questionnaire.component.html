@@ -1,0 +1,303 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="content-header">New Sample Form:</div>
+    </div>
+</div>
+  <section id="ngx">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <aw-wizard #wizard navBarLayout="large-empty-symbols">
+                    <aw-wizard-step [stepTitle]="'Step 1'" [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+                        <form #personalForm="ngForm" class="editForm" novalidate>
+                            <div class='row'>
+                                <div class='col-12'>
+                                    <div class="row">
+                                        <div class='col-12'>
+                                            <div class="form-group text-center">
+                                                <button type="button" uiSref="work" class="btn btn-info btn-raised" [disabled]="!personalForm.valid" awNextStep>
+                                                    Next
+                                                    <span style="margin-left:10px;">
+                                                        <i class="ft-chevron-right"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <h6 class="text-muted font-weight-bold">Required Dropdown Field (Required):</h6>
+                                            <div class="form-group">
+                                                <select id="participantType" required
+                                                    (input)="onParticipantTypeChange($event)" ngModel #participationType="ngModel" name="participantType" class="form-control">
+                                                    <option *ngFor="let participantType of allParticipantTypes"
+                                                    [ngValue]="participantType">{{participantType}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="participantTypeSelected && !patientGroupRepSelected" class='col-12'>
+                                            <h6 class="text-muted font-weight-bold">Conditionally Rendered Field (Required):</h6>
+                                            <div class="form-group">
+                                                <select id="subtype" required (input)="onParticipantSubTypeChange($event)" name="subtype" ngModel #subtype="ngModel" class="form-control">
+                                                    <option *ngFor="let subtype of allParticipantSubTypes" [ngValue]="subtype">{{subtype}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="patientGroupRepSelected" class='col-12'>
+                                            <h6 class="text-muted font-weight-bold">Yes/No Fields (Select all that apply):</h6>
+                                            <div class="row">
+                                                <div *ngFor="let option of pgrAttributes" class="col-12">
+                                                    <div class="form-group">
+                                                        <label [for]="option">{{option.name}}</label><br>
+                                                        <mat-slide-toggle (input)="onPgrAttributeChange($event)" class="p-2" [id]="option.id" 
+                                                        [name]="option.id" ></mat-slide-toggle><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-12'>
+                                            <h6 class="text-muted font-weight-bold">Yes/No Fields (Select all that apply):</h6>
+                                            <small class="text-muted font-weight-light">You can have multiple groups of form fields of the same type!</small>
+                                            <div class="row">
+                                                <div *ngFor="let option of expertiseOptions" class="col-12">
+                                                    <div class="form-group">
+                                                        <label [for]="option">{{option.name}}</label><br>
+                                                        <mat-slide-toggle (input)="onExpertiseChange($event)" class="p-2" [id]="'expertise_'+option.id" 
+                                                        [name]="option.id" ></mat-slide-toggle><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="content-header">Answer Dictionary:</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card text-left">
+                                        <div class="card-body">
+                                            <div class="card-content">
+                                                <div class="row mt-3">
+                                                    <div class="col-12">
+                                                        <h5><strong>Dropdown Options:</strong></h5>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                                                        <p><strong>Field 1</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-8 col-xl-8 col-sm-12 col-md-8">
+                                                        <small>Field 1 is a sample field.</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                                                        <p><strong>Field 2</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-8 col-xl-8 col-sm-12 col-md-8">
+                                                        <small>Field 2 is another sample field.</small>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-12">
+                                                        <p><strong>Field 3</strong></p>
+                                                    </div>
+                                                    <div class="col-lg-8 col-xl-8 col-sm-12 col-md-8">
+                                                        <small>Field 3 is a third sample field.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </aw-wizard-step>
+
+                    <aw-wizard-step [stepTitle]="'Step 2 - Datagrid Example'" [navigationSymbol]="{ symbol: '&#xf017;', fontFamily: 'FontAwesome' }">
+                        <br>
+                        <form #activityForm="ngForm" class="editForm" novalidate>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group text-center space-20">
+                                        <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                                            <span style="margin-right:10px;">
+                                                <i class="ft-chevron-left"></i>
+                                            </span> Previous</button>
+                                        <button uiSref="address" type="button" class="btn btn-raised btn-info" [disabled]="!workForm.valid" awNextStep>
+                                            Next
+                                            <span style="margin-left:10px;">
+                                                <i class="ft-chevron-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-responsive-md table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%">Row Key:</th>
+                                        <th>Category 1:</th>
+                                        <th>Category 2:</th>
+                                        <th>Category 3:</th>
+                                        <th>Category 4:</th>
+                                        <th>Category 5:</th>
+                                        <th>Row Total:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let activity of activities">
+                                        <th scope="row" style="width: 25%">{{activity.name}}</th>
+                                        <td class="text-center">
+                                            <input (input)="onActivityTimeChange($event)" class="form-control input-md" [name]="activity.id + '_prep'" [name]="activity.id + '_prep'" type="number">
+                                        </td>
+                                        <td class="text-center">
+                                            <input (input)="onActivityTimeChange($event)" class="form-control input-md" [name]="activity.id + '_activity'" [name]="activity.id + '_activity'" type="number">
+                                        </td>
+                                        <td class="text-center">
+                                            <input (input)="onActivityTimeChange($event)" class="form-control input-md" [name]="activity.id + '_post'" [name]="activity.id + '_post'" type="number">
+                                        </td>
+                                        <td class="text-center">
+                                            <input (input)="onActivityTimeChange($event)" class="form-control input-md" [name]="activity.id + '_travel'" [name]="activity.id + '_travel'" type="number">
+                                        </td>
+                                        <td class="text-center">
+                                            <input (input)="onActivityTimeChange($event)" class="form-control input-md" [name]="activity.id + '_eventNumber'" [name]="activity.id + '_eventNumber'" type="number">
+                                        </td>
+                                        <td class="text-center">
+                                            <h4 [id]="activity.id + '_totalTime'">{{totalHours[activity.id] || 0}}</h4>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="text-muted font-weight-bold">Generic Text Input 1</h6>
+                                <div class="form-group">
+                                    <input type="text" (input)="onPrepDescriptionChange($event)" class="form-control" id="prepDescription" placeholder="Placeholder Text...">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h6 class="text-muted font-weight-bold">Generic Text Input 2</h6>
+                                <div class="form-group">
+                                    <input type="text" (input)="onPostEngagementDescriptionChange($event)" class="form-control" id="postEngagementDescription" placeholder="Placeholder Text...">
+                                </div>
+                            </div>
+                        </div>
+                    </aw-wizard-step>
+
+                    <aw-wizard-step  [stepTitle]="'Step 3'" [navigationSymbol]="{ symbol: '&#xf0b1;', fontFamily: 'FontAwesome' }">
+                        <form #workForm="ngForm" class="editForm" novalidate>
+                            <div class='row mt-3 justify-content-center'>
+                                <div class='col-12'>
+                                    <div class="form-group text-center space-20 mt-3">
+                                        <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                                            <span style="margin-right:10px;">
+                                                <i class="ft-chevron-left"></i>
+                                            </span> Previous</button>
+                                        <button uiSref="address" type="button" class="btn btn-raised btn-info" [disabled]="!workForm.valid" awNextStep>
+                                            Next
+                                            <span style="margin-left:10px;">
+                                                <i class="ft-chevron-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <h6 class="text-muted">Radio Group:</h6>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" required id="inPerson" name="work" class="custom-control-input" value="inPerson">
+                                                    <label class="custom-control-label" for="inPerson">Option A</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="telephone"  name="work" class="custom-control-input" value="telephone">
+                                                    <label class="custom-control-label" for="telephone">Option B</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="teleconference" name="work" class="custom-control-input" value="teleconference">
+                                                    <label class="custom-control-label" for="teleconference">Option C</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="webMeeting" name="work" class="custom-control-input" value="webMeeting">
+                                                    <label class="custom-control-label" for="webMeeting">Option D</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="electronic"  name="work" class="custom-control-input" value="electronic">
+                                                    <label class="custom-control-label" for="electronic">Option E</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="paperBasedMail" name="work" class="custom-control-input" value="paperBasedMail">
+                                                    <label class="custom-control-label" for="paperBasedMail">Option F</label>
+                                                </div>
+                                                <div class="custom-control custom-radio m-1">
+                                                    <input (input)="handleInteractionChange($event)" type="radio" id="other" name="work" class="custom-control-input" value="other">
+                                                    <label class="custom-control-label" for="other">Other (please specify)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="otherSelected === 'other'" class="col-12">
+                                            <div class="form-group">
+                                                <label for="otherText">Other</label>
+                                                <input type="text" (input)="onOtherInteractionTextChange($event)" class="form-control" id="otherText" placeholder="Other...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class='row justify-content-center'>
+                                <div class='col-12'>
+                                    <h6 class="text-muted font-weight-bold">Generic Text Inputs (Grid Layout):</h6>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="milage">Text 1 - Col 1</label>
+                                                <input (input)="onOtherTravelInfoChange($event)" class="form-control input-md" ngModel #milage="ngModel" id="milage" name="milage" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="tolls">Text 2 - Col 2</label>
+                                                <input (input)="onOtherTravelInfoChange($event)" class="form-control input-md" ngModel #tolls="ngModel" id="tolls" name="tolls" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="parking">Text 3 - Col 3</label>
+                                                <input (input)="onOtherTravelInfoChange($event)" class="form-control input-md" ngModel #parking="ngModel" id="parking" name="parking" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>                        
+                    </aw-wizard-step>
+
+                    <aw-wizard-step [stepTitle]="'Step 4'" [navigationSymbol]="{ symbol: '&#xf0ac;', fontFamily: 'FontAwesome' }">
+                        <form #addressForm="ngForm" class="editForm" novalidate>
+                            <div class='row'>
+                                <div class='col-sm-12 col-md-6 col-lg-6'>
+                                    <div class="form-group text-center">
+                                        <button uiSref="work" type="button" class="btn btn-block btn-raised btn-secondary mr-1" awPreviousStep>
+                                            <span style="margin-right:10px;">
+                                                <i class="ft-chevron-left"></i>
+                                            </span> Modify Responses</button>
+                                    </div>
+                                </div>
+                                <div class='col-sm-12 col-md-6 col-lg-6'>
+                                    <div class="form-group text-center">
+                                        <button uiSref="result" (click)="handleSubmit()" type="button" class="btn btn-block btn-raised btn-success" awResetWizard>
+                                            Submit Form
+                                            <span style="margin-left:10px;">
+                                                <i class="ft-chevron-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </aw-wizard-step>
+                </aw-wizard>
+            </div>
+        </div>
+    </div>
+  </section>
