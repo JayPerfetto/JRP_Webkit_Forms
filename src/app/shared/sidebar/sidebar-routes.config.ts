@@ -13,6 +13,17 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
     },
     {
+        path: '/pages/about-the-developer',
+        title: 'About the Developer',
+        adminOnly: true,
+        icon: 'ft-github',
+        class: '',
+        badge: '',
+        badgeClass: '',
+        isExternalLink: false,
+        submenu: []
+    },
+    {
         path: '/info-page',
         title: 'Information Page',
         adminOnly: false,

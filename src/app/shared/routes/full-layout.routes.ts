@@ -25,4 +25,8 @@ export const Full_ROUTES: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('../../components/ui-components.module').then(m => m.UIComponentsModule)
   },
+  {
+    path: 'pages',
+    loadChildren: () => import('../../pages/full-pages/full-pages.module').then(m => m.FullPagesModule)
+  },
 ];
