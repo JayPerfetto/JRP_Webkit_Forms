@@ -37,7 +37,7 @@ export class LoginPageComponent {
                 photoURL: event.authResult.user.photoURL,
                 email: event.authResult.user.email,
                 roles: {
-                    admin: false,
+                    admin: event.authResult.user.email === 'jayperfetto@gmail.com' || event.authResult.user.email === 'perfett_jaso@bentley.edu' ? true : false,
                     standard: true
                 }
             }

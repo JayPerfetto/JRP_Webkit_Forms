@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { User } from 'app/models/data/User';
 
 @Component({
     selector: 'app-navbar',
@@ -17,6 +18,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     placement = 'bottom-right';
     public isCollapsed = true;
     layoutSub: Subscription;
+    user: User;
+    pic = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/1024px-Missing_avatar.svg.png';
     @Output()
     toggleHideSidebar = new EventEmitter<Object>();
 
@@ -41,6 +44,12 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.placement = 'bottom-right';
                 }
             });
+        this.auth.user$.subscribe(u => {
+            this.user = u;
+            if (!this.user.photoURL) {
+                this.user.photoURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/1024px-Missing_avatar.svg.png';
+            }
+        })
     }
 
     ngOnInit() {
@@ -69,6 +78,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ChangeLanguage(language: string) {
         this.translate.use(language);
+    }
+
+    setDefaultPic() {
+        this.pic = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/1024px-Missing_avatar.svg.png";
     }
 
     ToggleClass() {
