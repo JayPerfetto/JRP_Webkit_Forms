@@ -82,7 +82,7 @@
     "ngx-spinner": "^8.1.0",
     "ngx-toastr": "10.0.4",
     "ngx-ui-switch": "8.0.1",
-    "node-sass": "4.12.0",
+    "node-sass": "7.0.0",
     "nouislider": "13.1.5",
     "npm": "^6.13.7",
     "prismjs": "1.16.0",
